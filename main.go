@@ -52,7 +52,7 @@ func isNStraightHand(hand []int, groupSize int) bool {
 					return false
 				}
 
-				numMap[check] -= 1
+				numMap[check] = value - 1
 				check += 1
 			}
 		}
