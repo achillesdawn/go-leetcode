@@ -7,8 +7,6 @@ import (
 
 func isNStraightHand(hand []int, groupSize int) bool {
 
-	fmt.Println("hand", hand, "size", groupSize)
-
 	totalGroups := len(hand) / groupSize
 
 	if totalGroups < 1 {
@@ -38,24 +36,23 @@ func isNStraightHand(hand []int, groupSize int) bool {
 	for _, key := range keys {
 
 		count := numMap[key]
-		if count == 0 {
+
+		if count < 0 {
+			return false
+		} else if count == 0 {
 			continue
 		}
-		fmt.Println("checking key", key, "for", count, "times", numMap)
 
 		for range count {
 			check := key
 			for range groupSize {
-				fmt.Println("checking key", check)
 				value, exists := numMap[check]
 
 				if !exists {
-					fmt.Println(check, "does not exist")
 					return false
 				}
 
 				if value < 0 {
-					fmt.Println("less than zero")
 					return false
 				}
 
@@ -70,7 +67,7 @@ func isNStraightHand(hand []int, groupSize int) bool {
 }
 
 func main() {
-	nums := []int{1, 1, 2, 2, 3, 3, 3, 4}
+	nums := []int{5, 1, 0, 6, 4, 5, 3, 0, 8, 9}
 	result := isNStraightHand(nums, 2)
 	fmt.Println(result)
 }

@@ -73,3 +73,12 @@ func TestCase8(t *testing.T) {
 		t.Errorf("should be false")
 	}
 }
+
+func TestCase9(t *testing.T) {
+	nums := []int{5, 1, 0, 6, 4, 5, 3, 0, 8, 9}
+	result := isNStraightHand(nums, 2)
+
+	if result {
+		t.Errorf("should be false")
+	}
+}
