@@ -37,10 +37,10 @@ func isNStraightHand(hand []int, groupSize int) bool {
 
 		count := numMap[key]
 
-		if count < 0 {
-			return false
-		} else if count == 0 {
+		if count == 0 {
 			continue
+		} else if count < 0 {
+			return false
 		}
 
 		for range count {
@@ -48,21 +48,15 @@ func isNStraightHand(hand []int, groupSize int) bool {
 			for range groupSize {
 				value, exists := numMap[check]
 
-				if !exists {
+				if !exists || value < 0 {
 					return false
 				}
 
-				if value < 0 {
-					return false
-				}
-
-				numMap[check] = value - 1
+				numMap[check] -= 1
 				check += 1
 			}
 		}
-
 	}
-
 	return true
 }
 
